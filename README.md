@@ -33,11 +33,11 @@ yarn add xy-input
 
 ## 使用
 
-```ts
+```tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import XyInput from "xy-input";
-ReactDOM.render(<XyInput />, container);
+import { Input, InputGroup } from "xy-input";
+ReactDOM.render(<Input />, container);
 ```
 
 ## 开发
