@@ -36,7 +36,7 @@ yarn add xy-input
 ```tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import { Input, InputGroup } from "xy-input";
+import { Input, InputGroup, TextArea } from "xy-input";
 ReactDOM.render(<Input />, container);
 ```
 

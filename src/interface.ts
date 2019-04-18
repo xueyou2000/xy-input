@@ -1,3 +1,5 @@
+export type TextAreaSize = { minRows: number; maxRows: number };
+
 export interface InputGenericProps {
     /**
      * 附加类名
@@ -46,11 +48,11 @@ export interface InputGenericProps {
     /**
      * 输入框焦点事件
      */
-    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onFocus?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     /**
      * 输入框失去焦点事件
      */
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     /**
      * 键盘事件
      */
@@ -62,11 +64,11 @@ export interface InputGenericProps {
     /**
      * 开始输入中文
      */
-    onCompositionStart?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+    onCompositionStart?: (e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     /**
      * 输入中文完毕
      */
-    onCompositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+    onCompositionEnd?: (e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export interface InputProps extends InputGenericProps {
@@ -121,4 +123,11 @@ export interface InputGroupProps {
      * 内容
      */
     children?: React.ReactNode;
+}
+
+export interface TextAreaProps extends InputGenericProps {
+    /**
+     * 是否自动调整尺寸
+     */
+    autosize?: boolean | TextAreaSize;
 }
