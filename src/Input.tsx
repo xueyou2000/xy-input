@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 
 export function Input(props: InputProps) {
-    const { prefixCls = "xy-input", className, style, type = "text", defaultValue, onChange, clearable = false, addonBefore, addonAfter, prefix, suffix, ...genericProps } = props;
+    const { prefixCls = "xy-input", className, style, type = "text", defaultValue, onChange, clearable = false, onClean, addonBefore, addonAfter, prefix, suffix, ...genericProps } = props;
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const classString = classNames(prefixCls, className, {
         [`${prefixCls}-disabled`]: props.disabled
@@ -33,6 +33,9 @@ export function Input(props: InputProps) {
 
     function cleanHandle() {
         changeValue("");
+        if (onClean) {
+            onClean();
+        }
     }
 
     function cleanBtn() {

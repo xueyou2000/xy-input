@@ -79,6 +79,10 @@ export interface InputProps extends InputGenericProps {
      */
     clearable?: boolean;
     /**
+     * 清除按钮点击事件
+     */
+    onClean?: Function;
+    /**
      * 前置标签
      */
     addonBefore?: React.ReactNode;
