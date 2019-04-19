@@ -4,7 +4,7 @@ import { useControll } from "utils-hooks";
 import { InputProps } from "./interface";
 import InputGroup from "./InputGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 export function Input(props: InputProps) {
     const { prefixCls = "xy-input", className, style, type = "text", defaultValue, onChange, clearable = false, onClean, addonBefore, addonAfter, prefix, suffix, ...genericProps } = props;
@@ -46,29 +46,31 @@ export function Input(props: InputProps) {
         );
     }
 
-    function renderAffix() {
-        const canBeClearn = value && clearable;
-        if (prefix || (suffix || canBeClearn)) {
-            const _suffix = canBeClearn ? cleanBtn() : suffix;
+    function renderAffix(renderStyle?: boolean) {
+        if (prefix || (suffix || clearable)) {
+            const _suffix = clearable && value ? cleanBtn() : suffix;
             return (
-                <div className={`${prefixCls}-affix-wrapper`}>
+                <div className={`${prefixCls}-affix-wrapper`} style={renderStyle && style}>
                     {prefix && <span className={`${prefixCls}-prefix`}>{prefix}</span>}
                     {renderInput()}
                     {_suffix && <span className={`${prefixCls}-suffix`}>{_suffix}</span>}
                 </div>
             );
         } else {
-            return renderInput();
+            return renderInput(true);
         }
     }
 
-    function renderInput() {
-        return <input {...genericProps} type={type} {...(isControll ? { value } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} style={style} onChange={changeHandle} />;
+    function renderInput(renderStyle?: boolean) {
+        if (renderStyle) {
+            genericProps["style"] = style;
+        }
+        return <input {...genericProps} type={type} {...(isControll || clearable ? { value: value || "" } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} onChange={changeHandle} />;
     }
 
     if (addonBefore || addonAfter) {
         return (
-            <div className={`${prefixCls}-group-wrapper`}>
+            <div className={`${prefixCls}-group-wrapper`} style={style}>
                 <InputGroup>
                     {addonBefore && <span className={`${prefixCls}-addon`}>{addonBefore}</span>}
                     {renderAffix()}
@@ -77,7 +79,7 @@ export function Input(props: InputProps) {
             </div>
         );
     } else {
-        return renderAffix();
+        return renderAffix(true);
     }
 }
 

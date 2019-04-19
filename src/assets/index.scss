@@ -82,7 +82,8 @@ $--disabled-color-dark: #d9d9d9;
     line-height: 1.5;
     list-style: none;
 
-    .#{$InputPrefixCls} {
+    .#{$InputPrefixCls},
+    .#{$AffixWrapper} {
         display: table-cell;
         float: left;
         width: 100%;
@@ -91,13 +92,15 @@ $--disabled-color-dark: #d9d9d9;
     }
 
     & > .#{$InputPrefixCls}:first-child,
-    & > .#{$InputPrefixCls}-addon:first-child {
+    & > .#{$InputPrefixCls}-addon:first-child,
+    & > .#{$AffixWrapper}:first-child .#{$InputPrefixCls} {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
 
     & > .#{$InputPrefixCls}:last-child,
-    & > .#{$InputPrefixCls}-addon:last-child {
+    & > .#{$InputPrefixCls}-addon:last-child,
+    & > .#{$AffixWrapper}:last-child .#{$InputPrefixCls} {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
@@ -143,7 +146,8 @@ $--disabled-color-dark: #d9d9d9;
 
 .#{$InputPrefixCls}-addon:not(:first-child):not(:last-child),
 .#{$InputGroupPrefixCls}-wrapper:not(:first-child):not(:last-child),
-.#{$InputGroupPrefixCls} > .#{$InputPrefixCls}:not(:first-child):not(:last-child) {
+.#{$InputGroupPrefixCls} > .#{$InputPrefixCls}:not(:first-child):not(:last-child),
+.#{$InputGroupPrefixCls} > .#{$AffixWrapper}:not(:first-child):not(:last-child) > .#{$InputPrefixCls} {
     border-radius: 0;
 }
 

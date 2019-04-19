@@ -3,7 +3,7 @@ import { Input, InputGroup } from "../src";
 import { Select, Option } from "xy-select";
 import "xy-select/assets/index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faCalendarCheck, faCaretSquareRight } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp, faCalendarCheck, faCaretSquareRight } from "@fortawesome/free-solid-svg-icons";
 import "./index.scss";
 
 export default function() {
@@ -28,22 +28,23 @@ export default function() {
             <Input placeholder="Basic usage" clearable={true} />
 
             <h1>前置/后置</h1>
-            <Input addonBefore="Http://" addonAfter=".com" defaultValue="mysite" />
+            <Input addonBefore="Http://" addonAfter=".com" defaultValue="mysite" clearable={true} />
             <br />
-            <Input addonBefore={selectBefore} addonAfter={selectAfter} defaultValue="mysite" />
+            <Input addonBefore={selectBefore} addonAfter={selectAfter} defaultValue="mysite" clearable={true} />
             <br />
-            <Input addonAfter={<FontAwesomeIcon icon={faThumbsUp} />} defaultValue="mysite" />
+            <Input addonAfter={<FontAwesomeIcon icon={faThumbsUp} />} defaultValue="mysite" clearable={true} />
 
             <h1>前缀/后缀</h1>
-            <Input prefix={<FontAwesomeIcon icon={faCalendarCheck} />} placeholder="输入用户名" />
+            <Input prefix={<FontAwesomeIcon icon={faCalendarCheck} />} placeholder="输入用户名" clearable={true} />
             <br />
             <br />
-            <Input suffix={<FontAwesomeIcon icon={faCaretSquareRight} />} />
+            <Input suffix={<FontAwesomeIcon icon={faCaretSquareRight} />} clearable={true} />
 
             <h1>输入框组合</h1>
+
             <InputGroup compact={true}>
-                <Input style={{ width: "20%" }} />
-                <Input style={{ width: "60%" }} />
+                <Input style={{ width: "20%" }} clearable={true} />
+                <Input style={{ width: "60%" }} clearable={true} />
                 <Select defaultValue=".com" style={{ width: "20%" }}>
                     <Option value=".com">.com</Option>
                     <Option value=".jp">.jp</Option>
@@ -57,7 +58,7 @@ export default function() {
                     <Option value="Http:">Http:</Option>
                     <Option value="Https:">Https:</Option>
                 </Select>
-                <Input style={{ width: "60%" }} />
+                <Input style={{ width: "60%" }} clearable={true} />
                 <Select defaultValue=".com" style={{ width: "20%" }}>
                     <Option value=".com">.com</Option>
                     <Option value=".jp">.jp</Option>
