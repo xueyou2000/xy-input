@@ -51,7 +51,7 @@ export function TextArea(props: TextAreaProps) {
         resizeTextarea();
     }, [value]);
 
-    return <textarea {...genericProps} ref={inputRef} {...(isControll ? { value } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} style={Object.assign({}, style, textareaStyle)} onChange={changeHandle} />;
+    return <textarea {...genericProps} ref={inputRef} {...(isControll ? { value: value || '' } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} style={Object.assign({}, style, textareaStyle)} onChange={changeHandle} />;
 }
 
 export default React.memo(TextArea);

@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.5 (Wed Apr 24 2019)
+
+-   修复`TextArea`当`value`为空时应该使用空字符串
+
 ## 0.0.4 (Fri Apr 19 2019)
 
 -   使用`solid`图标而不是`regular`图标
