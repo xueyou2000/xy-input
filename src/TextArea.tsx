@@ -4,9 +4,11 @@ import { useControll } from "utils-hooks";
 import CalcTextareaHeight from "./CalcTextareaHeight";
 import { TextAreaProps } from "./interface";
 
-export function TextArea(props: TextAreaProps) {
+export const TextArea = React.forwardRef((props: TextAreaProps, inputRef: React.MutableRefObject<any>) => {
     const { prefixCls = "xy-textarea", className, style, defaultValue, autosize, onChange, ...genericProps } = props;
-    const inputRef = useRef();
+    if (!inputRef) {
+        inputRef = useRef();
+    }
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const [textareaStyle, setTextareaStyle] = useState<React.CSSProperties>({});
     const classString = classNames(prefixCls, className, {
@@ -51,7 +53,17 @@ export function TextArea(props: TextAreaProps) {
         resizeTextarea();
     }, [value]);
 
-    return <textarea {...genericProps} ref={inputRef} {...(isControll ? { value: value || '' } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} style={Object.assign({}, style, textareaStyle)} onChange={changeHandle} />;
-}
+    return (
+        <textarea
+            {...genericProps}
+            ref={inputRef}
+            {...(isControll ? { value: value || "" } : { defaultValue: value })}
+            aria-disabled={props.disabled}
+            className={classString}
+            style={Object.assign({}, style, textareaStyle)}
+            onChange={changeHandle}
+        />
+    );
+});
 
 export default React.memo(TextArea);

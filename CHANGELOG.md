@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.6 (Wed Apr 24 2019)
+
+-   转发`ref`
+
 ## 0.0.5 (Wed Apr 24 2019)
 
 -   修复`TextArea`当`value`为空时应该使用空字符串

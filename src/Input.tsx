@@ -6,7 +6,7 @@ import InputGroup from "./InputGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
-export function Input(props: InputProps) {
+export const Input = React.forwardRef((props: InputProps, ref: React.MutableRefObject<any>) => {
     const { prefixCls = "xy-input", className, style, type = "text", defaultValue, onChange, clearable = false, onClean, addonBefore, addonAfter, prefix, suffix, ...genericProps } = props;
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const classString = classNames(prefixCls, className, {
@@ -50,7 +50,7 @@ export function Input(props: InputProps) {
         if (prefix || (suffix || clearable)) {
             const _suffix = clearable && value ? cleanBtn() : suffix;
             return (
-                <div className={`${prefixCls}-affix-wrapper`} style={renderStyle && style}>
+                <div className={`${prefixCls}-affix-wrapper`} style={renderStyle && style} ref={ref}>
                     {prefix && <span className={`${prefixCls}-prefix`}>{prefix}</span>}
                     {renderInput()}
                     {_suffix && <span className={`${prefixCls}-suffix`}>{_suffix}</span>}
@@ -64,13 +64,14 @@ export function Input(props: InputProps) {
     function renderInput(renderStyle?: boolean) {
         if (renderStyle) {
             genericProps["style"] = style;
+            genericProps["ref"] = ref;
         }
         return <input {...genericProps} type={type} {...(isControll || clearable ? { value: value || "" } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} onChange={changeHandle} />;
     }
 
     if (addonBefore || addonAfter) {
         return (
-            <div className={`${prefixCls}-group-wrapper`} style={style}>
+            <div className={`${prefixCls}-group-wrapper`} style={style} ref={ref}>
                 <InputGroup>
                     {addonBefore && <span className={`${prefixCls}-addon`}>{addonBefore}</span>}
                     {renderAffix()}
@@ -81,6 +82,6 @@ export function Input(props: InputProps) {
     } else {
         return renderAffix(true);
     }
-}
+});
 
 export default React.memo(Input);
