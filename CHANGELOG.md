@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.7 (Fri Apr 26 2019)
+
+-   更新依赖
+
 ## 0.0.61 (Wed Apr 24 2019)
 
 -   修复`TextArea`禁用样式

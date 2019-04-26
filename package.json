@@ -1,6 +1,6 @@
 {
     "name": "xy-input",
-    "version": "0.0.61",
+    "version": "0.0.7",
     "description": "基于React的输入框组件",
     "types": "es/index.d.ts",
     "main": "es/index.js",
@@ -10,7 +10,7 @@
     "files": [
         "es",
         "dist",
-        "assets/*.css"
+        "assets"
     ],
     "scripts": {
         "test": "quick-react-scripts test",
@@ -60,7 +60,7 @@
         "classnames": "^2.2.6",
         "react": "^16.8.2",
         "react-dom": "^16.8.2",
-        "utils-hooks": "^0.0.60"
+        "utils-hooks": "0.0.65"
     },
     "repository": {
         "type": "git",
@@ -68,7 +68,7 @@
     },
     "jest": {
         "transformIgnorePatterns": [
-            "<rootDir>/node_modules/(?!(utils-hooks|@fortawesome/react-fontawesome|@fortawesome/free-regular-svg-icons))"
+            "<rootDir>/node_modules/(?!(utils-hooks))"
         ]
     }
 }

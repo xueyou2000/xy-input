@@ -25,10 +25,10 @@
 
 ```sh
 # npm
-npm install --save xy-input
+npm install --save xy-input utils-hooks classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 
 # yarn
-yarn add xy-input
+yarn add xy-input utils-hooks classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 ```
 
 ## 使用
