@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Simple",
+        "title": "可清除",
+        "desc": "设置 clearable 属性可清除输入框内容"
+    },
+    {
+        "name": "Addon",
+        "title": "前置/后置标签",
+        "desc": "设置 addonBefore, addonAfter 属性配置前置/后置标签"
+    },
+    {
+        "name": "Prefix",
+        "title": "前缀/后缀",
+        "desc": "设置 prefix, suffix 属性配置前缀/后缀标签"
+    },
+    {
+        "name": "Compact",
+        "title": "输入框组合",
+        "desc": "紧凑的一组输入框，也可以配置Select组件"
+    },
+    {
+        "name": "TextArea",
+        "title": "文本域",
+        "desc": "可以根据内容调整高度, 还能配置最小，最大高度"
+    }
+]

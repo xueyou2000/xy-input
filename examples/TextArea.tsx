@@ -1,14 +1,11 @@
 import React from "react";
 import { TextArea } from "../src";
+import "../src/assets/index";
 
 export default function() {
     return (
         <div style={{ width: "500px" }}>
-            <h1>文本域</h1>
             <TextArea placeholder="请输入" autosize={{ minRows: 2, maxRows: 4 }} />
-
-            <h1>禁用样式</h1>
-            <TextArea disabled={true} placeholder="请输入" autosize={{ minRows: 2, maxRows: 4 }} />
         </div>
     );
 }
