@@ -1,6 +1,5 @@
 import React from "react";
 import { Input, InputGroup } from "../src";
-import "../src/assets/index";
 
 import { Select, Option } from "xy-select";
 import "xy-select/assets/index.css";

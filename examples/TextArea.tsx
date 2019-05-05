@@ -1,6 +1,5 @@
 import React from "react";
 import { TextArea } from "../src";
-import "../src/assets/index";
 
 export default function() {
     return (

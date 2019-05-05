@@ -7,7 +7,7 @@ import { TextAreaProps } from "./interface";
 export const TextArea = React.forwardRef((props: TextAreaProps, inputRef: React.MutableRefObject<any>) => {
     const { prefixCls = "xy-textarea", className, style, defaultValue, autosize, onChange, ...genericProps } = props;
     if (!inputRef) {
-        inputRef = useRef();
+        inputRef = useRef(null);
     }
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const [textareaStyle, setTextareaStyle] = useState<React.CSSProperties>({});
