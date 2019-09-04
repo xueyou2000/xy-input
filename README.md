@@ -16,7 +16,7 @@
 
 ```bash
 # yarn
-yarn add xy-input utils-hooks classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+yarn add xy-input
 ```
 
 ## 使用例子

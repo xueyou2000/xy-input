@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "react-testing-library";
+import { render, fireEvent } from "@testing-library/react";
 import { Input } from "../src";
 
 describe("Input", () => {
@@ -29,7 +29,17 @@ describe("Input", () => {
         const onChange = jest.fn();
         const onCompositionStart = jest.fn();
         const onCompositionEnd = jest.fn();
-        const wrapper = render(<Input placeholder="请输入内容" onFocus={onFocus} onBlur={onBlur} onKeyDown={onKeyDown} onChange={onChange} onCompositionStart={onCompositionStart} onCompositionEnd={onCompositionEnd} />);
+        const wrapper = render(
+            <Input
+                placeholder="请输入内容"
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onKeyDown={onKeyDown}
+                onChange={onChange}
+                onCompositionStart={onCompositionStart}
+                onCompositionEnd={onCompositionEnd}
+            />,
+        );
         const input = wrapper.getByPlaceholderText("请输入内容");
 
         fireEvent.focus(input);

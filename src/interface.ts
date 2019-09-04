@@ -75,7 +75,7 @@ export interface InputProps extends InputGenericProps {
     /**
      * 输入框类型
      */
-    type?: "text" | "password";
+    type?: string;
     /**
      * 是否显示清除
      */
