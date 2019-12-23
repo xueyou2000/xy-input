@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.3 (Mon Dec 23 2019)
+
+-   `TextArea`增加`ios`防止底部键盘位置突出
+
 ## 0.1.2 (Mon Dec 23 2019)
 
 -   增加`ios`防止底部键盘位置突出

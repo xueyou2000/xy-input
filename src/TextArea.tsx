@@ -5,14 +5,14 @@ import CalcTextareaHeight from "./CalcTextareaHeight";
 import { TextAreaProps } from "./interface";
 
 export const TextArea = React.forwardRef((props: TextAreaProps, inputRef: React.MutableRefObject<any>) => {
-    const { prefixCls = "xy-textarea", className, style, defaultValue, autosize, onChange, ...genericProps } = props;
+    const { prefixCls = "xy-textarea", className, style, defaultValue, autosize, onChange, onBlur, ...genericProps } = props;
     if (!inputRef) {
         inputRef = useRef(null);
     }
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const [textareaStyle, setTextareaStyle] = useState<React.CSSProperties>({});
     const classString = classNames(prefixCls, className, {
-        [`${prefixCls}-disabled`]: props.disabled
+        [`${prefixCls}-disabled`]: props.disabled,
     });
 
     function changeValue(val: string) {
@@ -31,6 +31,17 @@ export const TextArea = React.forwardRef((props: TextAreaProps, inputRef: React.
 
     function changeHandle(event: React.ChangeEvent<HTMLTextAreaElement>) {
         changeValue(event.target.value);
+    }
+
+    function blurHandle(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        if (onBlur) {
+            onBlur(e);
+        }
+        if (/webOS|iPhone|iPod/i.test(navigator.userAgent)) {
+            // 移动端, 防止ios键盘底部突出
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     }
 
     function resizeTextarea() {
@@ -61,6 +72,7 @@ export const TextArea = React.forwardRef((props: TextAreaProps, inputRef: React.
             aria-disabled={props.disabled}
             className={classString}
             style={Object.assign({}, style, textareaStyle)}
+            onBlur={blurHandle}
             onChange={changeHandle}
         />
     );
