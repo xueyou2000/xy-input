@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 export const Input = React.forwardRef((props: InputProps, ref: React.MutableRefObject<any>) => {
-    const { prefixCls = "xy-input", className, style, type = "text", defaultValue, onChange, clearable = false, onClean, addonBefore, addonAfter, prefix, suffix, ...genericProps } = props;
+    const { prefixCls = "xy-input", className, style, type = "text", defaultValue, onChange, clearable = false, onClean, addonBefore, addonAfter, prefix, suffix, onBlur, ...genericProps } = props;
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const classString = classNames(prefixCls, className, {
-        [`${prefixCls}-disabled`]: props.disabled
+        [`${prefixCls}-disabled`]: props.disabled,
     });
 
     function changeValue(val: string) {
@@ -31,6 +31,17 @@ export const Input = React.forwardRef((props: InputProps, ref: React.MutableRefO
         changeValue(event.target.value);
     }
 
+    function blurHandle(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        if (onBlur) {
+            onBlur(e);
+        }
+        if (/webOS|iPhone|iPod/i.test(navigator.userAgent)) {
+            // 移动端, 防止ios键盘底部突出
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    }
+
     function cleanHandle() {
         changeValue("");
         if (onClean) {
@@ -47,7 +58,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.MutableRefO
     }
 
     function renderAffix(renderStyle?: boolean) {
-        if (prefix || (suffix || clearable)) {
+        if (prefix || suffix || clearable) {
             const _suffix = clearable && value ? cleanBtn() : suffix;
             return (
                 <div className={`${prefixCls}-affix-wrapper`} style={renderStyle && style} ref={ref}>
@@ -66,7 +77,7 @@ export const Input = React.forwardRef((props: InputProps, ref: React.MutableRefO
             genericProps["style"] = style;
             genericProps["ref"] = ref;
         }
-        return <input {...genericProps} type={type} {...(isControll || clearable ? { value: value || "" } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} onChange={changeHandle} />;
+        return <input {...genericProps} type={type} {...(isControll || clearable ? { value: value || "" } : { defaultValue: value })} aria-disabled={props.disabled} className={classString} onBlur={blurHandle} onChange={changeHandle} />;
     }
 
     if (addonBefore || addonAfter) {
