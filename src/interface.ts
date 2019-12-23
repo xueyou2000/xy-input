@@ -38,6 +38,10 @@ export interface InputGenericProps {
      */
     placeholder?: string;
     /**
+     * 匹配模式
+     */
+    pattern?: string;
+    /**
      * 自动焦点
      */
     autoFocus?: boolean;

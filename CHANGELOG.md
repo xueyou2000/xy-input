@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.1 (Mon Dec 23 2019)
+
+-   增加`pattern`属性
+
 ## 0.1.0 (Tue Nov 19 2019)
 
 -   修复`react`与`react-dom`版本不一致导致的问题
